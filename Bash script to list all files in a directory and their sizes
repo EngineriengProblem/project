@@ -1,0 +1,14 @@
+#!/bin/bash
+
+directory="."
+
+echo "Files in $directory:"
+echo "Filename - Size (bytes)"
+
+for file in "$directory"/*; do
+    if [ -f "$file" ]; then
+        size=$(du -b "$file" | cut -f1)
+        filename=$(basename "$file")
+        echo "$filename - $size"
+    fi
+done
